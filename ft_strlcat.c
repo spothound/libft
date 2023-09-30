@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnavarro <fnavarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 19:34:28 by fnavarro          #+#    #+#             */
-/*   Updated: 2023/09/30 12:01:59 by fnavarro         ###   ########.fr       */
+/*   Created: 2023/09/30 11:54:42 by fnavarro          #+#    #+#             */
+/*   Updated: 2023/09/30 12:39:57 by fnavarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,23 @@
 	That means the length of src. 
 	If the return value is >= dstsize, output has been truncated.
 	It is the caller's responsibility to handle this. */
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	srclen;
-	size_t	i;
+	size_t	dst_len;
+	size_t	src_len;
 
-	srclen = ft_strlen(src);
-	i = 0;
-	while (*src && i + 1 < dstsize)
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	if (dstsize == 0)
+		return (src_len);
+	while (*dst)
+		dst++;
+	while (*src && dst_len + 1 < dstsize)
 	{
 		*dst++ = *src++;
-		i++;
+		dst_len++;
 	}
 	if (dstsize > 0)
 		*dst = '\0';
-	return (srclen);
+	return (src_len + dst_len);
 }

@@ -6,7 +6,7 @@
 /*   By: fnavarro <fnavarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:19:01 by fnavarro          #+#    #+#             */
-/*   Updated: 2023/09/16 12:19:59 by fnavarro         ###   ########.fr       */
+/*   Updated: 2023/09/30 12:06:50 by fnavarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 
 #include "libft.h"
 
-int	ft_lower(int c)
+int	ft_tolower(int c)
 {
 	int	diff;
 
-	if (ft_islower(c))
+	if (ft_isupper(c))
 	{
 		diff = 'a' - 'A';
 		return (c + diff);

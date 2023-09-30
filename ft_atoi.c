@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnavarro <fnavarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/16 10:47:13 by fnavarro          #+#    #+#             */
-/*   Updated: 2023/09/30 11:12:24 by fnavarro         ###   ########.fr       */
+/*   Created: 2023/09/30 11:43:26 by fnavarro          #+#    #+#             */
+/*   Updated: 2023/09/30 12:23:20 by fnavarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+int	ft_atoi(const char *str)
 {
-	if (c >= ' ' && c <= '~')
+	int		output;
+	int		sign;
+	char	*ptr;
+
+	output = 0;
+	sign = 1;
+	ptr = (char *)str;
+	while (ft_isspace(*ptr))
+		ptr++;
+	if (*ptr == '-')
+		sign = -1;
+	if (*ptr == '+' || *ptr == '-')
+		ptr++;
+	while (ft_isdigit(*ptr))
 	{
-		return (1);
+		output = output * 10 + (*ptr - '0');
+		ptr++;
 	}
-	else
-	{
-		return (0);
-	}
+	return (sign * output);
 }
