@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnavarro <fnavarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 19:34:28 by fnavarro          #+#    #+#             */
-/*   Updated: 2023/10/24 20:38:51 by fnavarro         ###   ########.fr       */
+/*   Created: 2023/10/24 20:42:59 by fnavarro          #+#    #+#             */
+/*   Updated: 2023/11/01 12:58:00 by fnavarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	srclen;
-	size_t	i;
+	size_t	new_len;
 
-	srclen = ft_strlen(src);
-	i = 0;
-	while (*src && i + 1 < dstsize)
-	{
-		*dst++ = *src++;
-		i++;
-	}
-	if (dstsize > 0)
-		*dst = '\0';
-	return (srclen);
+	if (!s)
+		return (NULL);
+	new_len = ft_strlen(s);
+	if (start > new_len)
+		return (ft_strdup(""));
+	new_len = new_len - start;
+	if (new_len > len)
+		new_len = len;
+	return (ft_strndup(&s[start], new_len));
 }

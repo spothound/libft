@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnavarro <fnavarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 19:34:28 by fnavarro          #+#    #+#             */
-/*   Updated: 2023/10/24 20:38:51 by fnavarro         ###   ########.fr       */
+/*   Created: 2023/10/24 20:46:46 by fnavarro          #+#    #+#             */
+/*   Updated: 2023/10/24 21:29:57 by fnavarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_strjoin(char const	*s1, char const	*s2)
 {
-	size_t	srclen;
-	size_t	i;
+	size_t	l1;
+	size_t	l2;
+	char	*ptr;
 
-	srclen = ft_strlen(src);
-	i = 0;
-	while (*src && i + 1 < dstsize)
-	{
-		*dst++ = *src++;
-		i++;
-	}
-	if (dstsize > 0)
-		*dst = '\0';
-	return (srclen);
+	l1 = ft_strlen(s1);
+	l2 = ft_strlen(s2);
+	ptr = malloc(l1 + l2 + 1);
+	if (!ptr)
+		return (NULL);
+	ft_memmove(ptr, s1, l1);
+	ft_memmove(ptr + l1, s2, l2);
+	ptr[l1 + l2] = '\0';
+	return (ptr);
 }

@@ -6,13 +6,13 @@
 /*   By: fnavarro <fnavarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 10:28:03 by fnavarro          #+#    #+#             */
-/*   Updated: 2023/09/30 11:12:15 by fnavarro         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:22:39 by fnavarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_truncate_sign(int n)
+static int	ft_truncate_sign(int n)
 {
 	if (n > 0)
 		return (1);

@@ -6,33 +6,29 @@
 /*   By: fnavarro <fnavarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:54:42 by fnavarro          #+#    #+#             */
-/*   Updated: 2023/09/30 12:39:57 by fnavarro         ###   ########.fr       */
+/*   Updated: 2023/10/23 20:09:35 by fnavarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*  Like snprintf(3), the strlcpy() function returns...
-	...the total length of the string they tried to create.
-	That means the length of src. 
-	If the return value is >= dstsize, output has been truncated.
-	It is the caller's responsibility to handle this. */
+
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	dst_len;
-	size_t	src_len;
+	size_t	dst_idx;
+	size_t	src_idx;
 
-	dst_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
-	if (dstsize == 0)
-		return (src_len);
-	while (*dst)
-		dst++;
-	while (*src && dst_len + 1 < dstsize)
+	dst_idx = 0;
+	src_idx = 0;
+	while (dst[dst_idx] && dst_idx < dstsize)
+		dst_idx++;
+	if (dst_idx == dstsize && dst[dst_idx])
+		return (dst_idx + ft_strlen(src));
+	while (src[src_idx] && (dst_idx + src_idx + 1) < dstsize)
 	{
-		*dst++ = *src++;
-		dst_len++;
+		dst[dst_idx + src_idx] = src[src_idx];
+		src_idx++;
 	}
-	if (dstsize > 0)
-		*dst = '\0';
-	return (src_len + dst_len);
+	if (dstsize != 0)
+		dst[dst_idx + src_idx] = '\0';
+	return (dst_idx + ft_strlen(src));
 }
